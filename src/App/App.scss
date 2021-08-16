@@ -1,0 +1,26 @@
+@import "../styles/variables";
+
+.App {
+  height: 100vh;
+  overflow: auto;
+  background-color: $main-background;
+  color: $main-color;
+
+  .Section {
+    padding-top: 64px;
+
+    .description{
+      color: #fafafa;
+      font-size: 14px;
+      margin: 4px 0px;
+      font-style: italic;
+      margin-bottom: 1rem;
+
+    }
+
+    @media screen and (max-width:800px) {
+      padding-top: 32px;
+      padding-bottom: 32px;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+.SlideToogle {
+  height: 32px;
+  width: 60px;
+  border-radius: 16px;
+  background-color: #989898;
+  position: relative;
+  padding: 0px;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  transition: all ease .375s;
+  cursor: pointer;
+
+  &.activated {
+    transition: all ease .375s;
+    background-color: #90caf9;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    filter: brightness(.5);
+  }
+
+
+  .toogle {
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    box-shadow: 2px 3px 4px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    transition: all ease .375s;
+    background-color: #BDBDBD;
+    transform: translateX(10%);
+
+    &.activated {
+      transform: translateX(100%);
+      transition: all ease .375s;
+      background-color: #1976d2;
+    }
+
+  }
+}
