@@ -1,0 +1,46 @@
+.File {
+  position: relative;
+
+  &_header {
+    font-weight: 600;
+    padding-bottom: 8px;
+    cursor: pointer;
+  }
+
+  &_body {
+    margin-left: 16px;
+  }
+
+  &_directory {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 17px;
+      left: -14px;
+      width: 1px;
+      height: 65%;
+      background-color: #585858;
+    }
+
+  }
+}
+
+.file-open {
+  transform: rotate(180deg);
+  color: #585858;
+  font-size: 16px;
+  position: absolute;
+  top: 0px;
+  left: -20px;
+}
+
+.file-close {
+  transform: rotate(90deg);
+  color: #585858;
+  font-size: 16px;
+  position: absolute;
+  top: 0px;
+  left: -20px;
+}

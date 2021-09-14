@@ -1,4 +1,5 @@
 import React from 'react';
+import FileTree from '../components/FileTree/FileTree';
 import Header from '../components/Header/Header';
 import SlideToogle from '../components/SlideToogle/SlideToogle';
 import './App.scss';
@@ -15,17 +16,19 @@ function App() {
     <div className="App">
       <Header links={linksApp} />
       <Section title="Slide Toogle" description="*Componente para implementar la funcionalidad de los switch">
-        <SlideToogle></SlideToogle>
-        <br />
-        <SlideToogle label></SlideToogle>
-        <br />
-        <SlideToogle checked></SlideToogle>
-        <br />
-        <SlideToogle checked disabled></SlideToogle>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', rowGap: '1rem', maxWidth: '200px' }}>
+          <SlideToogle></SlideToogle>
+          <br />
+          <SlideToogle label></SlideToogle>
+          <br />
+          <SlideToogle checked></SlideToogle>
+          <br />
+          <SlideToogle checked disabled></SlideToogle>
+        </div>
       </Section>
 
       <Section title="File tree" description="*Componente para la vista de ficheros">
-        Here goes the file tree
+        <FileTree />
       </Section>
     </div>
   );
