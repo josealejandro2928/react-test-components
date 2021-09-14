@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 import React, { useEffect, useState } from 'react';
+import { useModal } from '../Modal/Modal';
 import styles from './FileTree.module.scss';
 
 const cx = classNames.bind({ ...styles });
@@ -45,7 +46,7 @@ function FileTree(): JSX.Element {
       ],
     },
   ]);
-
+  
   function onToogleItem(id: string) {
     let levels = id.split('-');
     let nodes: any = tree;
@@ -65,7 +66,7 @@ function FileTree(): JSX.Element {
   }
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '0px 20px' }}>
       {tree?.map((el: IFile, index: number) => (
         <FileItem key={Math.random() + index} file={el} setToogle={onToogleItem} id={`${index}-`} />
       ))}
