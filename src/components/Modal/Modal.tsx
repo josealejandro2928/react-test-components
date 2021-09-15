@@ -32,11 +32,33 @@ function Modal({
     styleContainer.minHeight = modalState.height;
   }
 
+  function onClickBackground() {
+    if (modalState.closeOnBackgroundOrEsc) {
+      closeModal();
+    }
+  }
+  function detectKey(e: any) {
+    if (e.key === 'Escape') {
+      onClickBackground();
+    }
+  }
+
+  useEffect(() => {
+    if (modalState.show) {
+      document.addEventListener('keydown', detectKey);
+    } else {
+      document.removeEventListener('keydown', detectKey);
+    }
+    return () => {
+      document.removeEventListener('keydown', detectKey);
+    };
+  }, [modalState.show]);
+
   return (
     <div id="modal-full-component" ref={modalRef} className="Modal">
       {modalState.show && (
         <>
-          <div className="backdrop"></div>
+          <div onClick={onClickBackground} className="backdrop"></div>
           <div className="modal-container" style={styleContainer}>
             <div className="header" style={styles?.header}>
               {modalState.title}
@@ -68,6 +90,7 @@ interface ModalOptions {
   dataProps?: any;
   width?: string | number;
   height?: string | number;
+  closeOnBackgroundOrEsc?: boolean | undefined;
 }
 
 export const useModal = (closeCb?: Function) => {
@@ -89,10 +112,7 @@ export const useModal = (closeCb?: Function) => {
       ...modalState,
       show: true,
       component: element,
-      title: options?.title,
-      dataProps: options?.dataProps,
-      width: options?.width,
-      height: options?.height,
+      ...options,
     });
   }
 
@@ -105,6 +125,7 @@ export const useModal = (closeCb?: Function) => {
       dataProps: data,
       height: null,
       width: null,
+      closeOnBackgroundOrEsc: false,
     });
   };
 

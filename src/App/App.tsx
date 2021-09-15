@@ -45,17 +45,81 @@ function App() {
             setComponentToRender(<FileTree />, {
               title: 'Arbol de archivos',
               dataProps: { name: 'Jose Alejandro' },
-              width: '20cm',
-              height: '45vh',
+              width: '15cm',
+              closeOnBackgroundOrEsc: false,
             });
           }}
         >
           Modal 1
         </Button>
+        <Button
+          style={{ marginLeft: '8px' }}
+          onClick={(e: any) => {
+            setComponentToRender(
+              <div>
+                <h2>Lorem, ipsum dolor sit!</h2>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, culpa quae? Quisquam voluptatem
+                  amet porro, atque, omnis iure ea maiores soluta vel quibusdam nihil laudantium iste, incidunt
+                  reprehenderit illo aliquam?
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, culpa quae? Quisquam voluptatem
+                  amet porro, atque, omnis iure ea maiores soluta vel quibusdam nihil laudantium iste, incidunt
+                  reprehenderit illo aliquam?
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, culpa quae? Quisquam voluptatem
+                  amet porro, atque, omnis iure ea maiores soluta vel quibusdam nihil laudantium iste, incidunt
+                  reprehenderit illo aliquam?
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, culpa quae? Quisquam voluptatem
+                  amet porro, atque, omnis iure ea maiores soluta vel quibusdam nihil laudantium iste, incidunt
+                  reprehenderit illo aliquam?
+                </p>
+                <blockquote>
+                  <p>
+                    Note: It is possible to use template-driven forms instead, if you prefer. We use reactive forms in
+                    this example because it makes subscribing to changes in the input's value easy. For this example, be
+                    sure to import <code>ReactiveFormsModule</code> from <code>@angular/forms</code> into your{' '}
+                    <code>NgModule</code>. If you are unfamiliar with using reactive forms, you can read more about the
+                    subject in the
+                    <a href="https://angular.io/guide/reactive-forms">Angular documentation</a>.
+                  </p>
+                </blockquote>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, culpa quae? Quisquam voluptatem
+                  amet porro, atque, omnis iure ea maiores soluta vel quibusdam nihil laudantium iste, incidunt
+                  reprehenderit illo aliquam?
+                </p>
+
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Similique, culpa quae? Quisquam voluptatem
+                  amet porro, atque, omnis iure ea maiores soluta vel quibusdam nihil laudantium iste, incidunt
+                  reprehenderit illo aliquam?
+                </p>
+              </div>,
+              {
+                title: 'Full Text Description',
+                width: '25cm',
+                closeOnBackgroundOrEsc: true,
+              }
+            );
+          }}
+        >
+          Modal 2
+        </Button>
       </Section>
 
       {/* Modal section here */}
-      <Modal styles={{ container: { width: '30rem', backgroundColor: '#323232', color: '#fff' } }} />
+      <Modal
+        styles={{
+          container: { width: '30rem', backgroundColor: '#323232', color: '#fff' },
+          header: { backgroundColor: '#1e1e1e' },
+          body: { maxHeight: '80vh' },
+        }}
+      />
     </div>
   );
 }

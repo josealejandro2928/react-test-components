@@ -19,19 +19,19 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
     border-radius: 8px;
     background-color: #fff;
-    color: rgba(0, 0, 0, .87);
+    color: #111111;
     animation: modal-up .375s ease 0s 1;
 
     .header {
       position: relative;
-      text-align: center;
-      font-size: 1.2rem;
+      font-weight: 500;
+      font-size: 1.4rem;
       padding: 1rem 1.5rem;
       min-height: 24px;
-      background-color: #1E1E1E;
+      background-color: #eeeeee;
       box-shadow: 0 0 4px rgba(0, 0, 0, .25);
 
       .close-btn {

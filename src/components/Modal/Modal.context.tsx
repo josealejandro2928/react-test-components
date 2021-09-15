@@ -9,6 +9,7 @@ export interface ModalState {
   dataProps: any;
   width?: string | number | undefined | null;
   height?: string | number | undefined | null;
+  closeOnBackgroundOrEsc?: boolean;
 }
 
 const initialState: ModalState = {
@@ -19,6 +20,7 @@ const initialState: ModalState = {
   dataProps: null,
   width: null,
   height: null,
+  closeOnBackgroundOrEsc: true,
 };
 
 export const ModalDataContext = createContext({ modalState: initialState, setModalState: (state: ModalState) => {} });
