@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useContext } from 'react';
-import { ModalDataContext } from './Modal.context';
+import { ModalDataContext, ModalState } from './Modal.context';
 import './Modal.scss';
 
 function Modal({
@@ -28,8 +28,34 @@ function Modal({
   if (modalState.width) {
     styleContainer.width = modalState.width;
   }
+
   if (modalState.height) {
     styleContainer.minHeight = modalState.height;
+  }
+
+  if (modalState.resizable) {
+    styleContainer.width = 'auto';
+    styleContainer.resize = 'auto';
+  } else {
+    styleContainer.resize = 'unset';
+  }
+
+  if (modalState.fullScreen) {
+    styleContainer.width = '100vw';
+    styleContainer.height = '100vh';
+    styleContainer.maxHeight = '100vh';
+    styleContainer.maxWidth = '100vw';
+    styles.body = { ...styles.body };
+    styles.body.maxHeight = '100vh';
+  } else {
+    styleContainer.maxHeight = '94vh';
+    styleContainer.maxWidth = '94vw';
+    styles.body = { ...styles.body };
+    styles.body.maxHeight = '64vh';
+  }
+
+  if (!modalState.animation) {
+    styleContainer.animation = 'unset';
   }
 
   function onClickBackground() {
@@ -91,7 +117,23 @@ interface ModalOptions {
   width?: string | number;
   height?: string | number;
   closeOnBackgroundOrEsc?: boolean | undefined;
+  resizable?: boolean;
+  fullScreen?: boolean;
+  animation?: boolean;
 }
+const initialModalState: ModalState = {
+  show: false,
+  component: null,
+  title: '',
+  dataProps: null,
+  height: null,
+  width: null,
+  closeOnBackgroundOrEsc: false,
+  footer: null,
+  resizable: false,
+  fullScreen: false,
+  animation: false,
+};
 
 export const useModal = (closeCb?: Function) => {
   const { modalState, setModalState } = useContext(ModalDataContext);
@@ -119,15 +161,17 @@ export const useModal = (closeCb?: Function) => {
   const closeModal = (data?: any) => {
     setModalState({
       ...modalState,
-      show: false,
-      component: null,
-      title: '',
+      ...initialModalState,
       dataProps: data,
-      height: null,
-      width: null,
-      closeOnBackgroundOrEsc: false,
     });
   };
 
-  return { dataToProps: modalState.dataProps, setComponentToRender, closeModal, modalState };
+  const setOptions = (options?: ModalOptions) => {
+    setModalState({
+      ...modalState,
+      ...options,
+    });
+  };
+
+  return { dataToProps: modalState.dataProps, modalState, setComponentToRender, closeModal, setOptions };
 };

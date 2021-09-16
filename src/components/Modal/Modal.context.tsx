@@ -10,6 +10,9 @@ export interface ModalState {
   width?: string | number | undefined | null;
   height?: string | number | undefined | null;
   closeOnBackgroundOrEsc?: boolean;
+  resizable?: boolean;
+  fullScreen?: boolean;
+  animation?: boolean;
 }
 
 const initialState: ModalState = {
@@ -21,6 +24,9 @@ const initialState: ModalState = {
   width: null,
   height: null,
   closeOnBackgroundOrEsc: true,
+  resizable: false,
+  fullScreen: false,
+  animation: false,
 };
 
 export const ModalDataContext = createContext({ modalState: initialState, setModalState: (state: ModalState) => {} });

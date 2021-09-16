@@ -47,6 +47,7 @@ function App() {
               dataProps: { name: 'Jose Alejandro' },
               width: '15cm',
               closeOnBackgroundOrEsc: false,
+              animation: true,
             });
           }}
         >
@@ -104,13 +105,40 @@ function App() {
                 title: 'Full Text Description',
                 width: '25cm',
                 closeOnBackgroundOrEsc: true,
+                resizable: true,
               }
             );
           }}
         >
           Modal 2
         </Button>
+        <Button
+          style={{ marginLeft: '8px' }}
+          onClick={(e: any) => {
+            setComponentToRender(
+              <div style={{ display: 'grid', placeItems: 'center', height: '80vh', maxHeight: '100%' }}>
+                <iframe
+                  style={{ width: 1280, height: 720, maxWidth: '100%', maxHeight: '100%' }}
+                  src="https://www.youtube.com/embed/Tn6-PIqc4UM?list=PL0vfts4VzfNgUUEtEjxDVfh4iocVR3qIb"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>,
+              {
+                title: 'React explined in 100 seconds',
+                closeOnBackgroundOrEsc: false,
+                fullScreen: true,
+              }
+            );
+          }}
+        >
+          Modal 3
+        </Button>
       </Section>
+
+      {/* <Section title="TO-DO app with React Redux" description="*Componente para implementar Modales"></Section> */}
 
       {/* Modal section here */}
       <Modal
