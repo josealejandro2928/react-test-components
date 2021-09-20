@@ -1,7 +1,6 @@
 import classNames from 'classnames/bind';
 import { useDispatch } from 'react-redux';
 import { ToDo } from '../../../store/reducers/to-do.reducer';
-import { useModal } from '../../Modal/Modal';
 import SlideToogle from '../../SlideToogle/SlideToogle';
 import styles from './../ToDo.module.scss';
 import { updateToDO } from '../../../store/actions/to-do.actions';

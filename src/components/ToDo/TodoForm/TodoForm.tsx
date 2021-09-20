@@ -1,14 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import classNames from 'classnames/bind';
 import { ToDo } from '../../../store/reducers/to-do.reducer';
 import { useModal } from '../../Modal/Modal';
-import styles from './../ToDo.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/reducers';
 import Button from '../../Button/Button';
 import { createTodo } from '../../../store/actions/to-do.actions';
-
-const cx = classNames.bind({ ...styles });
 
 function ToDoForm(): JSX.Element {
   const [toDoForm, setToDoForm] = useState<any>({
@@ -80,6 +77,7 @@ function ToDoForm(): JSX.Element {
       if (!toDoForm[key].value) {
         setToDoForm({ ...toDoForm, [key]: { ...form[key], error: `${key} value is required` } });
       }
+      return true;
     });
   }
 
