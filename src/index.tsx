@@ -3,12 +3,16 @@ import ReactDOM from 'react-dom';
 import App from './App/App';
 import { ModalDataContextProvider } from './components/Modal/Modal.context';
 import './index.scss';
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ModalDataContextProvider>
-      <App />
-    </ModalDataContextProvider>
+    <Provider store={store}>
+      <ModalDataContextProvider>
+        <App />
+      </ModalDataContextProvider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

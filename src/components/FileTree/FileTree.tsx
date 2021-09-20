@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
-import React, { useEffect, useState } from 'react';
-import { useModal } from '../Modal/Modal';
+import React, { useState } from 'react';
 import styles from './FileTree.module.scss';
 
 const cx = classNames.bind({ ...styles });
@@ -46,7 +45,7 @@ function FileTree(): JSX.Element {
       ],
     },
   ]);
-  
+
   function onToogleItem(id: string) {
     let levels = id.split('-');
     let nodes: any = tree;

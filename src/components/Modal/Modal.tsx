@@ -14,7 +14,7 @@ function Modal({
   },
 }: {
   styles?: {
-    container: any;
+    container?: any;
     header?: any;
     body?: any;
     footer?: any;
@@ -98,9 +98,12 @@ function Modal({
               {modalState.component}
             </div>
             {modalState.footer && (
-              <div className="footer" style={styles?.footer}>
-                {modalState.footer}
-              </div>
+              <>
+                <div style={{ height: '64px' }}></div>
+                <div className="footer" style={styles?.footer}>
+                  {modalState.footer}
+                </div>
+              </>
             )}
           </div>
         </>
@@ -173,5 +176,12 @@ export const useModal = (closeCb?: Function) => {
     });
   };
 
-  return { dataToProps: modalState.dataProps, modalState, setComponentToRender, closeModal, setOptions };
+  const setFooter = (footer: JSX.Element | null) => {
+    setModalState({
+      ...modalState,
+      footer,
+    });
+  };
+
+  return { dataToProps: modalState.dataProps, modalState, setComponentToRender, closeModal, setOptions, setFooter };
 };

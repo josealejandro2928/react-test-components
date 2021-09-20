@@ -4,6 +4,7 @@ import FileTree from '../components/FileTree/FileTree';
 import Header from '../components/Header/Header';
 import Modal, { useModal } from '../components/Modal/Modal';
 import SlideToogle from '../components/SlideToogle/SlideToogle';
+import ToDo from '../components/ToDo/ToDo';
 import './App.scss';
 
 function App() {
@@ -138,7 +139,9 @@ function App() {
         </Button>
       </Section>
 
-      {/* <Section title="TO-DO app with React Redux" description="*Componente para implementar Modales"></Section> */}
+      <Section title="TO-DO app with React Redux" description="*Example todo app for practice with redux">
+        <ToDo />
+      </Section>
 
       {/* Modal section here */}
       <Modal
