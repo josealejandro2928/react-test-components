@@ -4,6 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ### This project is for testing, with this we can test all the custom components we make
 
+![image-app](https://react-test-components.surge.sh/app-react-comp.jpeg)
+
 ## Available Scripts
 
 In the project directory, you can run:
