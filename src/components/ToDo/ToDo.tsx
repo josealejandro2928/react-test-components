@@ -7,8 +7,8 @@ import styles from './ToDo.module.scss';
 import { getTodos, saveTodosToStorage } from '../../store/actions/to-do.actions';
 import ToDoItem from './TodoItem/TodoItem';
 import Button from '../Button/Button';
-import { useModal } from '../Modal/Modal';
 import ToDoForm from './TodoForm/TodoForm';
+import { useModal } from 'react-hook-modal';
 
 const cx = classNames.bind({ ...styles });
 

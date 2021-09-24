@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { ToDo } from '../../../store/reducers/to-do.reducer';
-import { useModal } from '../../Modal/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../store/reducers';
 import Button from '../../Button/Button';
 import { createTodo } from '../../../store/actions/to-do.actions';
+import { useModal } from 'react-hook-modal';
 
 function ToDoForm(): JSX.Element {
   const [toDoForm, setToDoForm] = useState<any>({

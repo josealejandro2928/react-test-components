@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App/App';
-import { ModalDataContextProvider } from './components/Modal/Modal.context';
+import { ModalDataContextProvider } from 'react-hook-modal';
 import './index.scss';
+import 'react-hook-modal/dist/index.css';
 import { Provider } from 'react-redux';
 import store from './store/store';
 

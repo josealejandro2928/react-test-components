@@ -1,8 +1,9 @@
 import React from 'react';
+import { Modal, useModal } from 'react-hook-modal';
 import Button from '../components/Button/Button';
 import FileTree from '../components/FileTree/FileTree';
 import Header from '../components/Header/Header';
-import Modal, { useModal } from '../components/Modal/Modal';
+
 import SlideToogle from '../components/SlideToogle/SlideToogle';
 import ToDo from '../components/ToDo/ToDo';
 import './App.scss';
@@ -147,7 +148,7 @@ function App() {
       <Modal
         styles={{
           container: { width: '30rem', backgroundColor: '#323232', color: '#fff' },
-          header: { backgroundColor: '#1e1e1e' },
+          header: { backgroundColor: '#1e1e1e', color: '#fff' },
           body: { maxHeight: '80vh' },
         }}
       />
