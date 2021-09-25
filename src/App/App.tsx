@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, useModal } from 'react-hook-modal';
 import Button from '../components/Button/Button';
 import FileTree from '../components/FileTree/FileTree';
 import Header from '../components/Header/Header';
 
 import SlideToogle from '../components/SlideToogle/SlideToogle';
+import { Step, Stepper } from '../components/Stepper/Stepper';
 import ToDo from '../components/ToDo/ToDo';
+import TodoForm from '../components/ToDo/TodoForm/TodoForm';
 import './App.scss';
 
 function App() {
@@ -21,10 +23,67 @@ function App() {
   function onCloseFunction(data: any) {
     console.log('Close callback', data);
   }
+  const [step, setStep] = useState(0);
 
   return (
     <div className="App">
       <Header links={linksApp} />
+      <Section title="Stepper" description="*Componente para implementar la funcionalidad de los stepper">
+        <Stepper indexStep={step} stepChange={(index: number) => setStep(index)}>
+          <Step label="Primer paso">
+            <p>Step1</p>
+
+            <Button
+              onClick={() => {
+                setStep(step + 1);
+              }}
+            >
+              Next
+            </Button>
+          </Step>
+          <Step label="Segundo paso">
+            <p>Step2</p>
+            <Button
+              style={{ backgroundColor: '#616161' }}
+              onClick={() => {
+                setStep(step - 1);
+              }}
+            >
+              Back
+            </Button>
+            <Button
+              onClick={() => {
+                setStep(step + 1);
+              }}
+            >
+              Next
+            </Button>
+          </Step>
+          <Step label="Tercer paso">
+            <p>Step3</p>
+            <Button
+              style={{ backgroundColor: '#616161' }}
+              onClick={() => {
+                setStep(step - 1);
+              }}
+            >
+              Back
+            </Button>
+
+            <Button
+              onClick={() => {
+                setStep(step + 1);
+              }}
+            >
+              Next
+            </Button>
+          </Step>
+          <Step label="Cuarto paso">
+            <h2>Step 4</h2>
+            <TodoForm></TodoForm>
+          </Step>
+        </Stepper>
+      </Section>
       <Section title="Slide Toogle" description="*Componente para implementar la funcionalidad de los switch">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', rowGap: '1rem', maxWidth: '200px' }}>
           <SlideToogle></SlideToogle>
