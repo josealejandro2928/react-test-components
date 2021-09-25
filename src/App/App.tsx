@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Modal, useModal } from 'react-hook-modal';
 import Button from '../components/Button/Button';
 import FileTree from '../components/FileTree/FileTree';
 import Header from '../components/Header/Header';
 
 import SlideToogle from '../components/SlideToogle/SlideToogle';
-import { Step, Stepper } from '../components/Stepper/Stepper';
+import { StepperRef, Step, Stepper } from '../components/Stepper/Stepper';
 import ToDo from '../components/ToDo/ToDo';
 import TodoForm from '../components/ToDo/TodoForm/TodoForm';
 import './App.scss';
@@ -23,19 +23,19 @@ function App() {
   function onCloseFunction(data: any) {
     console.log('Close callback', data);
   }
-  const [step, setStep] = useState(0);
+  const stepper = useRef<StepperRef | null | undefined>(null);
 
   return (
     <div className="App">
       <Header links={linksApp} />
       <Section title="Stepper" description="*Componente para implementar la funcionalidad de los stepper">
-        <Stepper indexStep={step} stepChange={(index: number) => setStep(index)} verticalLabels>
+        <Stepper ref={stepper} mode="vertical">
           <Step label="Primer paso">
             <p>Step1</p>
 
             <Button
               onClick={() => {
-                setStep(step + 1);
+                stepper.current?.nextStep();
               }}
             >
               Next
@@ -46,14 +46,14 @@ function App() {
             <Button
               style={{ backgroundColor: '#616161' }}
               onClick={() => {
-                setStep(step - 1);
+                stepper.current?.prevStep();
               }}
             >
               Back
             </Button>
             <Button
               onClick={() => {
-                setStep(step + 1);
+                stepper.current?.nextStep();
               }}
             >
               Next
@@ -64,7 +64,7 @@ function App() {
             <Button
               style={{ backgroundColor: '#616161' }}
               onClick={() => {
-                setStep(step - 1);
+                stepper.current?.prevStep();
               }}
             >
               Back
@@ -72,7 +72,7 @@ function App() {
 
             <Button
               onClick={() => {
-                setStep(step + 1);
+                stepper.current?.nextStep();
               }}
             >
               Next
