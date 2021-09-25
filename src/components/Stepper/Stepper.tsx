@@ -8,6 +8,9 @@ export interface StepperProps {
   stepChange?: Function;
   headerStyles?: HeaderStepStyles;
   linearMode?: boolean;
+  verticalLabels?: boolean;
+  hideLabels?: boolean;
+  hideLines?: boolean;
 }
 
 export function Stepper({
@@ -15,6 +18,9 @@ export function Stepper({
   indexStep = 1,
   stepChange = (_index: number) => {},
   linearMode = false,
+  verticalLabels = false,
+  hideLabels = false,
+  hideLines = false,
   headerStyles = { color: '#fff', activatedStepBackground: '#3f51b5', stepsBackgroud: '#616161', lineColor: '#616161' },
 }: StepperProps): JSX.Element {
   const [steps, setSteps] = useState<Array<ReactElement> | null | undefined>([]);
@@ -70,6 +76,9 @@ export function Stepper({
         labels={labels}
         activeLabel={activatedStep}
         headerStyles={headerStyles}
+        verticalLabels={verticalLabels}
+        hideLabels={hideLabels}
+        hideLines={hideLines}
       ></HeaderStep>
 
       <div className={classes['body']}>
@@ -113,17 +122,22 @@ export function Stepper({
 }
 
 //////////////////HEADER STEPS///////////////////
-export interface HeaderStepStyles {
-  color?: string;
-  activatedStepBackground?: string;
-  stepsBackgroud?: string;
-  lineColor?: string;
-}
+
 export interface HeaderSteps {
   labels: Array<{ label?: string; id?: string }>;
   activeLabel: number;
   headerStyles?: HeaderStepStyles;
   clickStep: Function;
+  verticalLabels?: boolean;
+  hideLabels?: boolean;
+  hideLines?: boolean;
+}
+
+export interface HeaderStepStyles {
+  color?: string;
+  activatedStepBackground?: string;
+  stepsBackgroud?: string;
+  lineColor?: string;
 }
 
 export const HeaderStep = React.memo(function ({
@@ -131,6 +145,9 @@ export const HeaderStep = React.memo(function ({
   activeLabel,
   headerStyles = { color: '#fff', activatedStepBackground: '#3f51b5', stepsBackgroud: '#616161', lineColor: '#616161' },
   clickStep = (_index: number) => {},
+  verticalLabels = false,
+  hideLines = false,
+  hideLabels = false,
 }: HeaderSteps): JSX.Element {
   const headerEl = labels.map((label, index) => (
     <React.Fragment key={label.id}>
@@ -139,6 +156,7 @@ export const HeaderStep = React.memo(function ({
         onClick={() => {
           clickStep(index);
         }}
+        style={{ flexDirection: verticalLabels ? 'column' : 'row' }}
       >
         <div
           className={classes['index']}
@@ -149,16 +167,16 @@ export const HeaderStep = React.memo(function ({
         >
           {index + 1}
         </div>
-        {label.label && (
+        {label.label && !hideLabels && (
           <span
             className={index === activeLabel ? classes['text-selected'] : ''}
-            style={{ margin: '10px 0px 10px 10px' }}
+            style={{ margin: verticalLabels ? '10px 0px 10px 0px' : '10px 0px 10px 10px' }}
           >
             {label.label}
           </span>
         )}
       </div>
-      <div className={classes['line']} style={{ borderColor: headerStyles.lineColor }}></div>
+      {!hideLines && <div className={classes['line']} style={{ borderColor: headerStyles.lineColor }}></div>}
     </React.Fragment>
   ));
   return <div className={classes['header']}>{headerEl}</div>;
