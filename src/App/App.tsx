@@ -29,7 +29,10 @@ function App() {
     <div className="App">
       <Header links={linksApp} />
       <Section title="Stepper" description="*Componente para implementar la funcionalidad de los stepper">
-        <Stepper indexStep={step} stepChange={(index: number) => setStep(index)}>
+        <Stepper
+          indexStep={step}
+          stepChange={(index: number) => setStep(index)}
+        >
           <Step label="Primer paso">
             <p>Step1</p>
 

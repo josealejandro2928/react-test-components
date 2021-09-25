@@ -114,10 +114,10 @@ export function Stepper({
 
 //////////////////HEADER STEPS///////////////////
 export interface HeaderStepStyles {
-  color: string;
-  activatedStepBackground: string;
-  stepsBackgroud: string;
-  lineColor: string;
+  color?: string;
+  activatedStepBackground?: string;
+  stepsBackgroud?: string;
+  lineColor?: string;
 }
 export interface HeaderSteps {
   labels: Array<{ label?: string; id?: string }>;
