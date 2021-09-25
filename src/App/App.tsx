@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <Header links={linksApp} />
       <Section title="Stepper" description="*Componente para implementar la funcionalidad de los stepper">
-        <Stepper ref={stepper} mode="vertical">
+        <Stepper ref={stepper}>
           <Step label="Primer paso">
             <p>Step1</p>
 
