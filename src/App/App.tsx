@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { Modal, useModal } from 'react-hook-modal';
 import Button from '../components/Button/Button';
 import FileTree from '../components/FileTree/FileTree';
 import Header from '../components/Header/Header';
 
 import SlideToogle from '../components/SlideToogle/SlideToogle';
-import { StepperRef, Step, Stepper } from '../components/Stepper/Stepper';
+import { StepperRef, Step, Stepper } from 'react-basic-stepper';
 import ToDo from '../components/ToDo/ToDo';
 import TodoForm from '../components/ToDo/TodoForm/TodoForm';
 import './App.scss';
@@ -28,8 +28,28 @@ function App() {
   return (
     <div className="App">
       <Header links={linksApp} />
+
+      <Section title="Slide Toogle" description="*Componente para implementar la funcionalidad de los switch">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', rowGap: '1rem', maxWidth: '200px' }}>
+          <SlideToogle></SlideToogle>
+          <br />
+          <SlideToogle label></SlideToogle>
+          <br />
+          <SlideToogle checked></SlideToogle>
+          <br />
+          <SlideToogle checked disabled></SlideToogle>
+        </div>
+      </Section>
+
+      <Section title="File tree" description="*Componente para la vista de ficheros">
+        <FileTree />
+      </Section>
+
       <Section title="Stepper" description="*Componente para implementar la funcionalidad de los stepper">
-        <Stepper ref={stepper}>
+        <Stepper
+          ref={stepper}
+          headerStyles={{ lineColor: 'rgba(255,255,255,.4)', stepsBackgroud: 'rgba(255,255,255,.4)' }}
+        >
           <Step label="Primer paso">
             <p>Step1</p>
 
@@ -83,21 +103,6 @@ function App() {
             <TodoForm></TodoForm>
           </Step>
         </Stepper>
-      </Section>
-      <Section title="Slide Toogle" description="*Componente para implementar la funcionalidad de los switch">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', rowGap: '1rem', maxWidth: '200px' }}>
-          <SlideToogle></SlideToogle>
-          <br />
-          <SlideToogle label></SlideToogle>
-          <br />
-          <SlideToogle checked></SlideToogle>
-          <br />
-          <SlideToogle checked disabled></SlideToogle>
-        </div>
-      </Section>
-
-      <Section title="File tree" description="*Componente para la vista de ficheros">
-        <FileTree />
       </Section>
 
       <Section title="Dynamic Modal" description="*Componente para implementar Modales">
